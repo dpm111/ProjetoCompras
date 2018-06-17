@@ -20,7 +20,7 @@ namespace ProjetoCompras.Controllers
         public IHttpActionResult GetCabecalhoOrdemDeCompras()
         {
             var companies = db.CabecalhoOrdemDeCompras.Include("Fornecedor").Include("DetalhesPedidos").ToList();
-            return Ok(new { results = companies });
+            return Ok(new { cabecalhoOrdemDeCompras = companies });
         }
 
         // GET: api/CabecalhoOrdemDeCompras/5
@@ -50,6 +50,7 @@ namespace ProjetoCompras.Controllers
                 return BadRequest();
             }
 
+            cabecalhoOrdemDeCompras.DataModificacao = DateTime.Now;
             db.Entry(cabecalhoOrdemDeCompras).State = EntityState.Modified;
 
             try
@@ -79,7 +80,7 @@ namespace ProjetoCompras.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            cabecalhoOrdemDeCompras.DataModificacao = DateTime.Now;
             db.CabecalhoOrdemDeCompras.Add(cabecalhoOrdemDeCompras);
             db.SaveChanges();
 

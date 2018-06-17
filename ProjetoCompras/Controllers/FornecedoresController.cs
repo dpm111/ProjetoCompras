@@ -20,14 +20,14 @@ namespace ProjetoCompras.Controllers
         public IHttpActionResult GetFornecedores()
         {
             var companies = db.Fornecedores.Include("CabecalhoOrdemCompra").ToList();
-            return Ok(new { results = companies });
+            return Ok(new { fornecedor = companies });
         }
 
         // GET: api/Fornecedores/5
         [ResponseType(typeof(Fornecedor))]
         public IHttpActionResult GetFornecedor(int id)
         {
-            Fornecedor fornecedor = db.Fornecedores.Find(id);
+            Fornecedor fornecedor = db.Fornecedores.First(x => x.CodigoUnidadeDeNegocio.Equals(id));
             if (fornecedor == null)
             {
                 return NotFound();
@@ -49,7 +49,7 @@ namespace ProjetoCompras.Controllers
             {
                 return BadRequest();
             }
-
+            fornecedor.DataModificacao = DateTime.Now;
             db.Entry(fornecedor).State = EntityState.Modified;
 
             try
@@ -79,7 +79,7 @@ namespace ProjetoCompras.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            fornecedor.DataModificacao = DateTime.Now;
             db.Fornecedores.Add(fornecedor);
             db.SaveChanges();
 

@@ -198,6 +198,10 @@
     <Compile Include="Migrations\201806092255249_ProjetoCompra.Designer.cs">
       <DependentUpon>201806092255249_ProjetoCompra.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806170242206_adicionado CodigoProduto em ProdutoFornecedor.cs" />
+    <Compile Include="Migrations\201806170242206_adicionado CodigoProduto em ProdutoFornecedor.Designer.cs">
+      <DependentUpon>201806170242206_adicionado CodigoProduto em ProdutoFornecedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CabecalhoOrdemDeCompras.cs" />
     <Compile Include="Models\Context.cs" />
@@ -284,6 +288,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806092255249_ProjetoCompra.resx">
       <DependentUpon>201806092255249_ProjetoCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806170242206_adicionado CodigoProduto em ProdutoFornecedor.resx">
+      <DependentUpon>201806170242206_adicionado CodigoProduto em ProdutoFornecedor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

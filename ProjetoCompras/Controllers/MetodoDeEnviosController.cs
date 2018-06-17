@@ -20,7 +20,7 @@ namespace ProjetoCompras.Controllers
         public IHttpActionResult GetMetodoDeEnvios()
         {
             var companies = db.MetodoDeEnvios.Include("CabecalhoOrdemCompra").ToList();
-            return Ok(new { results = companies });
+            return Ok(new { metodoEnvio = companies });
         }
 
         // GET: api/MetodoDeEnvios/5
@@ -79,7 +79,8 @@ namespace ProjetoCompras.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            metodoDeEnvio.rowguid = Guid.NewGuid();
+            metodoDeEnvio.DataModificacao = DateTime.Now;
             db.MetodoDeEnvios.Add(metodoDeEnvio);
             db.SaveChanges();
 

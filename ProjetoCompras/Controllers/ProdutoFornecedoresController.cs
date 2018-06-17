@@ -20,14 +20,14 @@ namespace ProjetoCompras.Controllers
         public IHttpActionResult GetProdutoFornecedores()
         {
             var companies = db.ProdutoFornecedores.ToList();
-            return Ok(new { results = companies });
+            return Ok(new { produtoFornecedor = companies });
         }
 
         // GET: api/ProdutoFornecedores/5
         [ResponseType(typeof(ProdutoFornecedor))]
         public IHttpActionResult GetProdutoFornecedor(int id)
         {
-            ProdutoFornecedor produtoFornecedor = db.ProdutoFornecedores.Find(id);
+            ProdutoFornecedor produtoFornecedor = db.ProdutoFornecedores.First(x => x.CodigoProduto.Equals(id));
             if (produtoFornecedor == null)
             {
                 return NotFound();
@@ -50,6 +50,7 @@ namespace ProjetoCompras.Controllers
                 return BadRequest();
             }
 
+            produtoFornecedor.DataModificacao = DateTime.Now;
             db.Entry(produtoFornecedor).State = EntityState.Modified;
 
             try
@@ -79,7 +80,7 @@ namespace ProjetoCompras.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            produtoFornecedor.DataModificacao = DateTime.Now;
             db.ProdutoFornecedores.Add(produtoFornecedor);
             db.SaveChanges();
 

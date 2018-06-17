@@ -20,7 +20,7 @@ namespace ProjetoCompras.Controllers
         public IHttpActionResult GetDetalhesDoPedidos()
         {
             var companies = db.DetalhesDoPedidos.Include("CabecalhoOrdemCompra").ToList();
-            return Ok(new { results = companies });
+            return Ok(new { detalhespedido = companies });
         }
 
         // GET: api/DetalhesDoPedidoes/5
@@ -49,7 +49,7 @@ namespace ProjetoCompras.Controllers
             {
                 return BadRequest();
             }
-
+            detalhesDoPedido.DataModificacao = DateTime.Now;
             db.Entry(detalhesDoPedido).State = EntityState.Modified;
 
             try
@@ -79,7 +79,7 @@ namespace ProjetoCompras.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            detalhesDoPedido.DataModificacao = DateTime.Now;
             db.DetalhesDoPedidos.Add(detalhesDoPedido);
             db.SaveChanges();
 
