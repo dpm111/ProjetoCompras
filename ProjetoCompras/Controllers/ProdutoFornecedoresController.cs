@@ -27,7 +27,7 @@ namespace ProjetoCompras.Controllers
         [ResponseType(typeof(ProdutoFornecedor))]
         public IHttpActionResult GetProdutoFornecedor(int id)
         {
-            ProdutoFornecedor produtoFornecedor = db.ProdutoFornecedores.First(x => x.CodigoProduto.Equals(id));
+            List<ProdutoFornecedor> produtoFornecedor = db.ProdutoFornecedores.Where(x => x.CodigoProduto.Equals(id)).ToList();
             if (produtoFornecedor == null)
             {
                 return NotFound();
