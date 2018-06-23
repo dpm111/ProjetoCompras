@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoCompras", "ProjetoCompras\ProjetoCompras.csproj", "{7EF86130-F405-43ED-BCFD-4362D76CA531}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compras.Tests", "Compras.Tests\Compras.Tests.csproj", "{324B1FBB-F20E-48EF-A2F0-B8C7916C8679}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7EF86130-F405-43ED-BCFD-4362D76CA531} = {7EF86130-F405-43ED-BCFD-4362D76CA531}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
